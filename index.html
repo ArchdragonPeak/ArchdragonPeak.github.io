@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="solid-prinzipien-in-oop">SOLID Prinzipien in OOP</h1>
+<h2 id="einleitung">Einleitung:</h2>
+<p><strong>SOLID</strong> ist ein Akronym, das fünf grundlegende Prinzipien der objektorientierten Programmierung und des Designs beschreibt. Es wurde von Robert C. Martin, auch bekannt als Uncle Bob, in den frühen 2000er Jahren formuliert. Die SOLID-Prinzipien helfen dabei, Software so zu entwerfen, dass sie leichter zu verstehen, zu warten und zu erweitern ist. Hier sind die fünf Prinzipien:</p>
+<ol>
+<li>
+<p><strong>S - Single Responsibility Principle (Einzelverantwortungsprinzip):</strong> Jede Klasse sollte nur <em>eine einzige Verantwortung</em> haben. Dies bedeutet, dass eine Klasse nur aus einem Grund geändert werden sollte. Wenn eine Klasse mehr als eine Aufgabe erfüllt, führt dies zu einer stärkeren Kopplung und erschwert die Wartung.</p>
+</li>
+<li>
+<p><strong>O - Open/Closed Principle (Offen/Geschlossen-Prinzip):</strong> Software-Entitäten (z.B. Klassen, Module, Funktionen) sollten offen für Erweiterungen, aber geschlossen für Modifikationen sein. Das bedeutet, dass das <em>Verhalten einer Entität erweitert werden kann, ohne ihren vorhandenen Quellcode zu ändern.</em></p>
+</li>
+<li>
+<p><strong>L - Liskov Substitution Principle (Liskovsches Substitutionsprinzip):</strong> <em>Objekte einer Basisklasse sollten so durch Objekte von Unterklassen ersetzt werden können</em>, dass das Programm weiterhin richtig funktioniert. Dieses Prinzip stellt sicher, dass eine Unterklasse wirklich als Ersatz für ihre Basisklasse dienen kann.</p>
+</li>
+<li>
+<p><strong>I - Interface Segregation Principle (Prinzip der Schnittstellentrennung):</strong> <em>Größere, umfassendere Schnittstellen sollten in kleinere, spezifischere unterteilt werden</em>, so dass Implementierende nur die Methoden implementieren müssen, die sie wirklich brauchen. Dies verhindert, dass eine Klasse Methoden implementieren muss, die sie nicht verwendet.</p>
+</li>
+<li>
+<p><strong>D - Dependency Inversion Principle (Abhängigkeitsumkehrprinzip):</strong> <em>Abhängigkeiten innerhalb des Codes sollten von abstrakten Schichten und nicht von konkreten Details abhängen</em>. Dies bedeutet, dass Module höherer Ebenen nicht von Modulen niedrigerer Ebenen abhängen sollten, sondern beide von Abstraktionen.</p>
+</li>
+</ol>
+<p>Durch die Anwendung dieser Prinzipien können Entwickler eine höhere Codequalität erzielen, was zu einer besseren Softwarewartung und Erweiterbarkeit führt.</p>
+<h2 id="konkrete-beispiele">Konkrete Beispiele:</h2>
+<h3 id="beispiel-für-das-einhalten-des-srp">Beispiel für das Einhalten des SRP:</h3>
+<h4 id="klasse-die-nur-eine-verantwortung-hat">Klasse, die nur eine Verantwortung hat:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token comment">// Diese Klasse ist nur für die Benutzerdaten verantwortlich</span>
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+
+    <span class="token comment">// Konstruktor, Getter und Setter</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Diese Klasse ist nur für die Benutzerverwaltung zuständig</span>
+<span class="token keyword">class</span> <span class="token class-name">UserManager</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Logik, um einen Benutzer zu erstellen</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Logik, um einen Benutzer zu löschen</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Weitere Benutzerverwaltungsmethoden</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Beispiel hat die <code>User</code>-Klasse nur die Verantwortung, die Benutzerdaten zu speichern, während die <code>UserManager</code>-Klasse alle Aufgaben im Zusammenhang mit der Benutzerverwaltung übernimmt.</p>
+<div class="page-break-after"></div>
+<h3 id="beispiel-für-das-nicht-einhalten-des-srp">Beispiel für das Nicht-Einhalten des SRP:</h3>
+<h4 id="klasse-die-mehrere-verantwortlichkeiten-hat">Klasse, die mehrere Verantwortlichkeiten hat:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token comment">// Diese Klasse vermischt Benutzerdaten mit Benutzerverwaltung</span>
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">createUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Logik, um einen Benutzer zu erstellen</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Logik, um einen Benutzer zu löschen</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Konstruktor, Getter, Setter und weitere Verwaltungsmethoden</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Gegenbeispiel übernimmt die <code>User</code>-Klasse sowohl die Verantwortung für die Speicherung der Benutzerdaten als auch für die Benutzerverwaltung. Dies verstößt gegen das SRP, da die Klasse nun aus mehreren Gründen geändert werden könnte – sei es aufgrund von Änderungen in der Art und Weise, wie Benutzerdaten gespeichert werden, oder aufgrund von Änderungen in der Logik der Benutzerverwaltung. Dadurch wird der Code schwerer wartbar und anfälliger für Fehler bei Änderungen.</p>
+<div class="page-break-after"></div>
+<h3 id="beispiel-für-das-einhalten-des-ocp">Beispiel für das Einhalten des OCP:</h3>
+<p>In diesem Beispiel verwenden wir Polymorphismus und Abstraktion, um das Prinzip zu demonstrieren.</p>
+<h4 id="basis-klasse-oder-interface">Basis-Klasse oder Interface:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">interface</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="konkrete-implementierungen">Konkrete Implementierungen:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">Rectangle</span> <span class="token keyword">implements</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">double</span> length<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">double</span> width<span class="token punctuation">;</span>
+
+    <span class="token comment">// Konstruktor, Getter und Setter</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> length <span class="token operator">*</span> width<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Circle</span> <span class="token keyword">implements</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">double</span> radius<span class="token punctuation">;</span>
+
+    <span class="token comment">// Konstruktor, Getter und Setter</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Math<span class="token punctuation">.</span>PI <span class="token operator">*</span> radius <span class="token operator">*</span> radius<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="page-break-after"></div>
+<h4 id="verwendung">Verwendung:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">AreaCalculator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateTotalArea</span><span class="token punctuation">(</span>Shape<span class="token punctuation">[</span><span class="token punctuation">]</span> shapes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">double</span> totalArea <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Shape shape <span class="token operator">:</span> shapes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            totalArea <span class="token operator">+=</span> shape<span class="token punctuation">.</span><span class="token function">calculateArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> totalArea<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Beispiel können wir neue Formen hinzufügen, wie z.B. ein Dreieck, ohne den <code>AreaCalculator</code> oder andere bestehende Klassen ändern zu müssen. Jede neue Form implementiert einfach das <code>Shape</code>-Interface.</p>
+<h3 id="beispiel-für-das-nicht-einhalten-des-ocp">Beispiel für das Nicht-Einhalten des OCP:</h3>
+<p>Hier ist ein Beispiel, das zeigt, wie man das Prinzip verletzen könnte, indem man eine Klasse modifiziert, um neues Verhalten hinzuzufügen.</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">AreaCalculator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">calculateTotalArea</span><span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span> shapes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">double</span> totalArea <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Object shape <span class="token operator">:</span> shapes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>shape <span class="token keyword">instanceof</span> <span class="token class-name">Rectangle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Rectangle rectangle <span class="token operator">=</span> <span class="token punctuation">(</span>Rectangle<span class="token punctuation">)</span> shape<span class="token punctuation">;</span>
+                totalArea <span class="token operator">+=</span> rectangle<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> rectangle<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>shape <span class="token keyword">instanceof</span> <span class="token class-name">Circle</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Circle circle <span class="token operator">=</span> <span class="token punctuation">(</span>Circle<span class="token punctuation">)</span> shape<span class="token punctuation">;</span>
+                totalArea <span class="token operator">+=</span> Math<span class="token punctuation">.</span>PI <span class="token operator">*</span> circle<span class="token punctuation">.</span><span class="token function">getRadius</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> circle<span class="token punctuation">.</span><span class="token function">getRadius</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// Für jede neue Form muss diese Methode geändert werden</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> totalArea<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem schlechten Beispiel muss die <code>calculateTotalArea</code>-Methode jedes Mal geändert werden, wenn eine neue Form hinzugefügt wird. Das verstößt gegen das OCP, da die Klasse nicht geschlossen für Modifikationen ist.</p>
+<h3 id="liskovsche-substitutionsprinzip">Liskovsche Substitutionsprinzip</h3>
+<p>Das Liskovsche Substitutionsprinzip (LSP) ist ein grundlegendes Prinzip der objektorientierten Programmierung. Es wurde von Barbara Liskov formuliert und besagt, dass Objekte einer Basisklasse so durch Objekte von Unterklassen ersetzt werden können, dass das Programm weiterhin richtig funktioniert. Mit anderen Worten, eine Unterklasse sollte ihre Basisklasse vollständig ersetzen können, ohne dass es zu Fehlern oder unerwartetem Verhalten kommt.</p>
+<h3 id="beispiel-für-das-einhalten-des-lsp">Beispiel für das Einhalten des LSP:</h3>
+<h4 id="basisklasse">Basisklasse:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implementierung des Fliegens</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="unterklasse">Unterklasse:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">Sparrow</span> <span class="token keyword">extends</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Spezifische Implementierung für einen Sperling</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Beispiel kann ein Objekt der Klasse <code>Sparrow</code> problemlos anstelle eines Objekts der Klasse <code>Bird</code> verwendet werden, da <code>Sparrow</code> das Verhalten von <code>Bird</code> korrekt implementiert.</p>
+<div class="page-break-after"></div>
+<h3 id="beispiel-für-das-nicht-einhalten-des-lsp">Beispiel für das Nicht-Einhalten des LSP:</h3>
+<p>Nehmen wir an, wir haben eine weitere Unterklasse:</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">Ostrich</span> <span class="token keyword">extends</span> <span class="token class-name">Bird</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsupportedOperationException</span><span class="token punctuation">(</span><span class="token string">"Strauße können nicht fliegen."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Hier verletzt die Klasse <code>Ostrich</code> das Liskovsche Substitutionsprinzip. Ein Strauß ist ein Vogel, aber er kann nicht fliegen. Wenn wir also ein Objekt der Klasse <code>Ostrich</code> anstelle eines Objekts der Klasse <code>Bird</code> verwenden, könnte das zu unerwartetem Verhalten oder Fehlern führen, wenn die <code>fly</code>-Methode aufgerufen wird.</p>
+<p>Um das LSP einzuhalten, sollte die Hierarchie anders strukturiert werden. Zum Beispiel könnte die Fähigkeit zu fliegen in einer separaten Schnittstelle oder in einer Unterklasse von <code>Bird</code> definiert werden, die nur flugfähige Vögel repräsentiert. Dadurch wird sichergestellt, dass Ersetzungen von Basisklassen durch Unterklassen keine unerwarteten Verhaltensweisen oder Fehler verursachen.</p>
+<div class="page-break-after"></div>
+<h3 id="interface-segregation-principle">Interface Segregation Principle</h3>
+<p>Das Prinzip der Schnittstellentrennung (Interface Segregation Principle, ISP) ist ein weiteres wichtiges Prinzip des SOLID-Akronyms in der objektorientierten Programmierung. Es besagt, dass keine Klasse gezwungen sein sollte, Schnittstellen zu implementieren, die sie nicht verwendet. Das heißt, größere, umfassende Schnittstellen sollten in kleinere, spezifischere unterteilt werden. Dieses Prinzip zielt darauf ab, “fette” Schnittstellen in kleinere und relevantere zu zerlegen, so dass die implementierenden Klassen nur die Methoden implementieren müssen, die sie wirklich benötigen.</p>
+<h3 id="beispiel-für-das-einhalten-des-isp">Beispiel für das Einhalten des ISP:</h3>
+<h4 id="spezifische-schnittstellen">Spezifische Schnittstellen:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">interface</span> <span class="token class-name">Printer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">Scanner</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">scan</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="page-break-after"></div>
+<h4 id="implementierende-klassen">Implementierende Klassen:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">SimplePrinter</span> <span class="token keyword">implements</span> <span class="token class-name">Printer</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implementierung des Druckvorgangs</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MultiFunctionPrinter</span> <span class="token keyword">implements</span> <span class="token class-name">Printer</span><span class="token punctuation">,</span> Scanner <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implementierung des Druckvorgangs</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">scan</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implementierung des Scanvorgangs</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Beispiel implementiert jede Klasse nur die Schnittstellen, die sie benötigt. <code>SimplePrinter</code> implementiert nur <code>Printer</code>, während <code>MultiFunctionPrinter</code> sowohl <code>Printer</code> als auch <code>Scanner</code> implementiert.</p>
+<div class="page-break-after"></div>
+<h3 id="beispiel-für-das-nicht-einhalten-des-isp">Beispiel für das Nicht-Einhalten des ISP:</h3>
+<h4 id="eine-fette-schnittstelle">Eine “fette” Schnittstelle:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">interface</span> <span class="token class-name">MultiFunctionDevice</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">scan</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">fax</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="implementierende-klasse-die-nicht-alle-methoden-benötigt">Implementierende Klasse, die nicht alle Methoden benötigt:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">SimplePrinter</span> <span class="token keyword">implements</span> <span class="token class-name">MultiFunctionDevice</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Implementierung des Druckvorgangs</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">scan</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Diese Methode wird nicht benötigt</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fax</span><span class="token punctuation">(</span>Document d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Diese Methode wird nicht benötigt</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem schlechten Beispiel muss <code>SimplePrinter</code> Methoden implementieren, die es gar nicht benötigt (wie <code>scan</code> und <code>fax</code>). Dies verletzt das ISP, da die Klasse gezwungen wird, eine Schnittstelle zu implementieren, die für sie nicht relevant ist.</p>
+<p>Das ISP zielt darauf ab, solche Situationen zu vermeiden und sorgt dafür, dass Klassen nicht mit unnötigen Methoden überladen werden, die sie nicht implementieren oder verwenden wollen.</p>
+<div class="page-break-after"></div>
+<h3 id="abhängigkeitsumkehrprinzip">Abhängigkeitsumkehrprinzip</h3>
+<p>Das Abhängigkeitsumkehrprinzip (Dependency Inversion Principle, DIP) ist das letzte der fünf SOLID-Prinzipien der objektorientierten Programmierung. Es besagt, dass:</p>
+<ol>
+<li>Hochrangige Module sollten nicht von niederrangigen Modulen abhängen. Beide sollten von Abstraktionen abhängen.</li>
+<li>Abstraktionen sollten nicht von Details abhängen. Details sollten von Abstraktionen abhängen.</li>
+</ol>
+<p>Das Prinzip zielt darauf ab, die Kopplung zwischen Softwaremodulen zu reduzieren, indem Abhängigkeiten auf Schnittstellen oder abstrakte Klassen umgeleitet werden, anstatt auf konkrete Klassen. Dies fördert eine lose Kopplung und erhöht die Wiederverwendbarkeit und Wartbarkeit der Software.</p>
+<h3 id="beispiel-für-das-einhalten-des-dip">Beispiel für das Einhalten des DIP:</h3>
+<h4 id="abstraktionen-schnittstellen">Abstraktionen (Schnittstellen):</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">interface</span> <span class="token class-name">DataReader</span> <span class="token punctuation">{</span>
+    String <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">DataWriter</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">write</span><span class="token punctuation">(</span>String data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="page-break-after"></div>
+<h4 id="niederrangige-module-implementierungen">Niederrangige Module (Implementierungen):</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">DatabaseReader</span> <span class="token keyword">implements</span> <span class="token class-name">DataReader</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Lese Daten aus der Datenbank</span>
+        <span class="token keyword">return</span> <span class="token string">"Daten aus der Datenbank"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">FileWriter</span> <span class="token keyword">implements</span> <span class="token class-name">DataWriter</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">write</span><span class="token punctuation">(</span>String data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Schreibe Daten in eine Datei</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="hochrangiges-modul">Hochrangiges Modul:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">DataProcessor</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> DataReader reader<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> DataWriter writer<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">DataProcessor</span><span class="token punctuation">(</span>DataReader reader<span class="token punctuation">,</span> DataWriter writer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>reader <span class="token operator">=</span> reader<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>writer <span class="token operator">=</span> writer<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String data <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem Beispiel hängt das hochrangige Modul <code>DataProcessor</code> von Abstraktionen (<code>DataReader</code> und <code>DataWriter</code>) ab, nicht von konkreten Implementierungen wie <code>DatabaseReader</code> oder <code>FileWriter</code>. Das ermöglicht es, die Datenquelle und das Datenziel bei Bedarf zu ändern, ohne <code>DataProcessor</code> zu modifizieren.</p>
+<div class="page-break-after"></div>
+<h3 id="beispiel-für-das-nicht-einhalten-des-dip">Beispiel für das Nicht-Einhalten des DIP:</h3>
+<h4 id="hochrangiges-modul-abhängig-von-niederrangigen-modulen">Hochrangiges Modul abhängig von niederrangigen Modulen:</h4>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">class</span> <span class="token class-name">DataProcessor</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> DatabaseReader reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatabaseReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> FileWriter writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String data <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In diesem schlechten Beispiel hängt <code>DataProcessor</code> direkt von den konkreten Klassen <code>DatabaseReader</code> und <code>FileWriter</code> ab. Das macht es schwierig, die Art und Weise, wie Daten gelesen und geschrieben werden, zu ändern, ohne <code>DataProcessor</code> zu modifizieren.</p>
+<p>Durch die Anwendung des Abhängigkeitsumkehrprinzips können Entwickler flexiblere, modularere und wartungsfreundlichere Systeme entwerfen.</p>
+<hr>
+<div class="page-break-after"></div>
+<h3 id="clean-code">Clean Code</h3>
+<p>Lassen Sie uns nun über Clean Code sprechen, ein Konzept, das von Robert C. Martin (auch bekannt als Uncle Bob) populär gemacht wurde. Clean Code bezieht sich auf die Praxis, Code zu schreiben, der leicht zu verstehen, zu warten und zu erweitern ist. Ein sauberer Code ist klar, einfach und direkt, und er vermeidet unnötige Komplexität. Einige Schlüsselkonzepte, die oft mit Clean Code in Verbindung gebracht werden, sind:</p>
+<h4 id="dry-dont-repeat-yourself">1. DRY (Don’t Repeat Yourself)</h4>
+<p>Das DRY-Prinzip besagt, dass “jedes Wissensstück nur eine einzige, eindeutige, maßgebliche Darstellung innerhalb eines Systems haben sollte”. Das bedeutet, dass man Redundanzen im Code vermeiden sollte. Statt denselben Code mehrfach zu wiederholen, sollte man ihn in eine Funktion oder Klasse extrahieren und von verschiedenen Stellen aus wiederverwenden. Dies erleichtert die Wartung, da Änderungen nur an einer Stelle vorgenommen werden müssen.</p>
+<div class="page-break-after"></div>
+<h4 id="pattern-chain-constructor">2. Pattern: Chain Constructor</h4>
+<p>Das Chain Constructor Pattern wird in Situationen verwendet, in denen eine Klasse mehrere Konstruktoren hat, die ähnliche oder sich überlappende Funktionalitäten aufweisen. Statt in jedem Konstruktor denselben Code zu wiederholen, ruft ein Konstruktor einen anderen mit einem Teil der Parameter auf. Dies reduziert die Code-Redundanz und erhöht die Klarheit.</p>
+<p>Beispiel:</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BeispielKlasse</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> y<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String z<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">BeispielKlasse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Standardwert"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">BeispielKlasse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">"Standardwert"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">BeispielKlasse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> String z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>z <span class="token operator">=</span> z<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="page-break-after"></div>
+<h4 id="pattern-extract-method">3. Pattern: Extract Method</h4>
+<p>Das Extract Method Pattern ist eine Technik, bei der Codeabschnitte, die eine spezifische Aufgabe erfüllen, in eine separate Methode extrahiert werden. Dies macht den Code lesbarer und wiederverwendbarer und hilft, lange Methoden zu vermeiden.</p>
+<p>Beispiel:</p>
+<p>Vor Extraktion:</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printDetails</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Code zur Berechnung von Details</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Details: ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Nach Extraktion:</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printDetails</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    String details <span class="token operator">=</span> <span class="token function">calculateDetails</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Details: "</span> <span class="token operator">+</span> details<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> String <span class="token function">calculateDetails</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Code zur Berechnung von Details</span>
+    <span class="token keyword">return</span> <span class="token string">"Berechnete Details"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="page-break-after"></div>
+<h4 id="integration-operation-segregation-principle">4. Integration Operation Segregation Principle</h4>
+<p>Das Integration Operation Segregation Principle ist weniger bekannt und spezifisch als die anderen genannten Konzepte. Es scheint eine Variation oder Erweiterung des Interface Segregation Principle zu sein, angewendet auf die Integration von Systemen oder Komponenten. Das Prinzip würde darauf hinweisen, dass Systeme oder Komponenten <strong>klar definierte, spezifische Integrationspunkte haben sollten, um Überladung oder Vermischung von Funktionalitäten zu vermeiden.</strong> Leider gibt es zu diesem Prinzip unter diesem spezifischen Namen keine etablierten oder weit verbreiteten Definitionen oder Beispiele, daher ist es schwierig, konkrete Beispiele oder detaillierte Erklärungen zu liefern.</p>
+<p>Diese Konzepte tragen alle zu einem klareren, wartungsfreundlicheren und effizienteren Code bei und sind ein wichtiger Teil dessen, was allgemein als <strong>“Clean Code”</strong> bezeichnet wird.</p>
+</div>
+</body>
+
+</html>
