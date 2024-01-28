@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenbanken_Vorlesung_Enhanced.md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="inhaltsverzeichnis">Inhaltsverzeichnis</h2>
+<ul>
+<li><a href="#sql">SQL</a></li>
+</ul>
+<p>Datenbanken WS23/24</p>
+<ul>
+<li>ER-Modell</li>
+<li>logisches Modell</li>
+<li>Normalisierung</li>
+<li>SQL
+<ul>
+<li>DDL und DML</li>
+<li>Benutzerverwaltung</li>
+<li>Transaktionen</li>
+<li>Views</li>
+<li>SQL Erweiterungen
+<ul>
+<li>Stored Procedures</li>
+<li>User Defined Functions</li>
+<li>Trigger</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>NoSQL
+<ul>
+<li>Redis</li>
+<li>Cassandra</li>
+<li>Neo4j</li>
+<li>MongoDB</li>
+</ul>
+</li>
+</ul>
+<h1 id="sql">SQL</h1>
+<h4 id="ddl-befehle">DDL-Befehle</h4>
+<ul>
+<li><code>CREATE</code></li>
+<li><code>ALTER</code></li>
+<li><code>DROP</code></li>
+</ul>
+<h4 id="anlegen-einer-datenbank">Anlegen einer Datenbank</h4>
+<ul>
+<li><code>CREATE DATABASE datenbankname;</code></li>
+</ul>
+<h4 id="anlegen-einer-tabelle">Anlegen einer Tabelle</h4>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> tabellenname <span class="token punctuation">(</span>
+ attribut1 datentyp <span class="token punctuation">[</span>constrain<span class="token punctuation">]</span><span class="token punctuation">,</span>
+ attribut2 datentyp <span class="token punctuation">[</span>constrain<span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span>tabellen_constrain<span class="token punctuation">]</span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="constrains">Constrains</h4>
+<ul>
+<li><code>NOT NULL</code> nur Spaltenconstrain</li>
+<li><code>UNIQUE</code></li>
+<li><code>PRIMARY KEY</code></li>
+<li><code>FOREIGN KEY</code></li>
+<li><code>CHECK</code></li>
+</ul>
+<h4 id="alter-table-anweisung">ALTER TABLE-ANWEISUNG</h4>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> tabellenname_alt <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> tabellenname_neu
+
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> tabellenname <span class="token keyword">ADD</span> <span class="token keyword">COLUMN</span> neuer_attributname datentyp
+
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> tabellenname <span class="token keyword">ALTER</span> <span class="token keyword">COLUMN</span> bestendes_attribut <span class="token keyword">TYPE</span> neuer_datentyp
+
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> tabellenname <span class="token keyword">DROP</span> bestehendes_attribut
+</code></pre>
+<h4 id="tabellen-und-datenbanken-löschen">Tabellen und Datenbanken löschen</h4>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> tabellenname<span class="token punctuation">;</span>
+
+<span class="token keyword">DROP</span> <span class="token keyword">SCHEMA</span> schemaname<span class="token punctuation">;</span>
+
+<span class="token keyword">DROP</span> <span class="token keyword">DATABASE</span> databasename<span class="token punctuation">;</span>
+</code></pre>
+<h3 id="dml">DML</h3>
+<h4 id="die-vier-dml-befehle">Die vier DML-Befehle</h4>
+<ul>
+<li><code>INSERT</code></li>
+<li><code>UPDATE</code></li>
+<li><code>DELETE</code></li>
+<li><code>SELECT</code></li>
+</ul>
+<h5 id="insert">Insert</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> tabellenname <span class="token punctuation">[</span>attribut1<span class="token punctuation">,</span>attribut2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>wert1<span class="token punctuation">,</span> wert2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="update">Update</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">UPDATE</span> tabellenname
+<span class="token keyword">SET</span> attribut <span class="token operator">=</span> wert<span class="token punctuation">,</span> attribut <span class="token operator">=</span> wert<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">WHERE</span> bedingung<span class="token punctuation">;</span>
+</code></pre>
+<h5 id="delete">Delete</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> tabellenname
+<span class="token keyword">WHERE</span> bedingung<span class="token punctuation">;</span>
+</code></pre>
+<h5 id="select">SELECT</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token operator">|</span> attribut1<span class="token punctuation">,</span> attribut2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">FROM</span> tabellenname<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> spalte1
+<span class="token keyword">FROM</span> tabellenname
+</code></pre>
+<h5 id="aliasnamen-as">Aliasnamen AS</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> spalte <span class="token keyword">AS</span> <span class="token string">"Name"</span>
+<span class="token keyword">FROM</span> tabellenname
+</code></pre>
+<h6 id="distinct">DISTINCT</h6>
+<h4 id="where">WHERE</h4>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token operator">|</span> attribut1<span class="token punctuation">,</span> attribut2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">FROM</span> tabellenname
+<span class="token keyword">WHERE</span> bedingung<span class="token punctuation">;</span>
+</code></pre>
+<h5 id="operatoren">Operatoren</h5>
+<ul>
+<li><code>BETWEEN ... AND ...</code></li>
+<li><code>IN (menge)</code></li>
+<li><code>LIKE "varchar"</code></li>
+<li><code>IS NULL</code></li>
+</ul>
+<h5 id="logische-operatoren">LOGISCHE OPERATOREN</h5>
+<ul>
+<li><code>AND</code></li>
+<li><code>OR</code></li>
+<li><code>NOT</code></li>
+</ul>
+<h5 id="order-by">ORDER BY</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token operator">|</span> attribut1<span class="token punctuation">,</span> attribut2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">FROM</span> tabellenname<span class="token punctuation">;</span>
+<span class="token keyword">WHERE</span> bedingung
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> attribut<span class="token punctuation">,</span> ausdruck <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="zeichenfunktionen">Zeichenfunktionen</h5>
+<ul>
+<li><code>LOWER</code></li>
+<li><code>UPPER</code></li>
+<li><code>LENGTH</code></li>
+<li><code>ROUND</code></li>
+</ul>
+<h5 id="bedingte-ausdrücke">Bedingte Ausdrücke</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CASE</span>
+    <span class="token keyword">WHEN</span> bedingung <span class="token keyword">THEN</span> return_ausdruck
+    <span class="token keyword">ELSE</span> else_ausdruck
+<span class="token keyword">END</span>
+</code></pre>
+<h4 id="joins">JOINS</h4>
+<ul>
+<li><code>INNER JOIN</code></li>
+<li><code>[LEFT,RIGHT,FULL] OUTER JOIN:</code></li>
+<li><code>SELF JOIN</code></li>
+<li><code>CROSS JOIN</code></li>
+</ul>
+<h4 id="gruppenfunktionen">Gruppenfunktionen</h4>
+<ul>
+<li><code>COUNT</code></li>
+<li><code>SUM</code></li>
+<li><code>MIN</code></li>
+<li><code>MAX</code></li>
+<li><code>AVG</code></li>
+</ul>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">[</span>attribut<span class="token punctuation">,</span><span class="token punctuation">]</span> gruppen_funktion<span class="token punctuation">(</span>attribut<span class="token punctuation">)</span><span class="token punctuation">,</span>…
+<span class="token keyword">FROM</span> tabellenname
+<span class="token punctuation">[</span><span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span> <span class="token keyword">LEFT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span><span class="token keyword">RIGHT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span><span class="token keyword">FULL</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span>
+tabellenname2
+<span class="token keyword">ON</span> joinbedingung<span class="token punctuation">(</span>en<span class="token punctuation">)</span>
+… weitere joins<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">WHERE</span> bedingung<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> attribut<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> attribut<span class="token punctuation">]</span>
+</code></pre>
+<p><code>SELECT COUNT(*)</code> &lt;-- Alle Datensätze werden gezählt</p>
+<h5 id="gruppenergebnisse-filtern-mit-having">Gruppenergebnisse filtern mit HAVING</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">[</span>attribut<span class="token punctuation">,</span><span class="token punctuation">]</span> gruppen_funktion<span class="token punctuation">(</span>attribut<span class="token punctuation">)</span><span class="token punctuation">,</span>…
+<span class="token keyword">FROM</span> tabellenname1 
+<span class="token punctuation">[</span><span class="token keyword">INNER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span> <span class="token keyword">LEFT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span><span class="token keyword">RIGHT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> <span class="token operator">|</span><span class="token keyword">FULL</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> tabellenname2
+<span class="token keyword">ON</span> joinbedingung<span class="token punctuation">(</span>en<span class="token punctuation">)</span> … weitere joins<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">WHERE</span> bedingung<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> attribut<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>HAVINGgruppen_bedingung<span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> attribut<span class="token punctuation">]</span>
+</code></pre>
+<h4 id="unterabfragen">Unterabfragen</h4>
+<p>Hier Beispiele</p>
+<h4 id="mengenoperationen">Mengenoperationen</h4>
+<ul>
+<li><code>UNION</code></li>
+<li><code>INTERSECT</code></li>
+<li><code>MINUS</code></li>
+</ul>
+<h3 id="dcl---data-control-language">DCL - Data Control Language</h3>
+<ul>
+<li><code>GRANT</code></li>
+<li><code>REVOKE</code></li>
+<li><code>COMMIT</code></li>
+<li><code>ROLEBACK</code></li>
+</ul>
+<h5 id="grant">Grant</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span>
+<span class="token keyword">ON</span> tabellenname
+<span class="token keyword">TO</span> Rolle<span class="token operator">|</span><span class="token keyword">User</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> rolle <span class="token keyword">TO</span> <span class="token keyword">User</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> privileg<span class="token punctuation">,</span>…<span class="token operator">|</span><span class="token keyword">ALL</span> <span class="token punctuation">[</span><span class="token keyword">PRIVILEGES</span><span class="token punctuation">]</span>
+<span class="token keyword">ON</span> tabellenname<span class="token punctuation">,</span>…<span class="token operator">|</span><span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">in</span> <span class="token keyword">SCHEMA</span> schemaname
+<span class="token keyword">TO</span> benutzername<span class="token punctuation">,</span>…<span class="token punctuation">.</span><span class="token operator">|</span>rollenname
+<span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span>
+</code></pre>
+<h5 id="revoke">Revoke</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">REVOKE</span> privileg<span class="token punctuation">,</span>…<span class="token operator">|</span><span class="token keyword">ALL</span> <span class="token punctuation">[</span>PRIVLEGES<span class="token punctuation">]</span> 
+<span class="token keyword">ON</span> tabellenname<span class="token punctuation">,</span>…<span class="token operator">|</span><span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">in</span> <span class="token keyword">SCHEMA</span> schemaname
+<span class="token keyword">FROM</span> benutzername<span class="token punctuation">,</span>…<span class="token punctuation">.</span><span class="token operator">|</span>rollenname
+<span class="token punctuation">[</span><span class="token keyword">CASCADE</span><span class="token punctuation">]</span>
+</code></pre>
+<h5 id="create">Create</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> name  <span class="token keyword">WITH</span> LOGIN PASSWORD <span class="token string">'pass'</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="speziell">Speziell</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> USGAE <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">schema</span> <span class="token keyword">TO</span> rolle<span class="token punctuation">;</span>
+
+<span class="token keyword">REVOKE</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">schema</span> <span class="token keyword">FROM</span> rolle<span class="token punctuation">;</span>
+
+<span class="token keyword">REVOKE</span> <span class="token keyword">ALL</span> PREVILEGES <span class="token keyword">ON</span> <span class="token keyword">ALL</span> <span class="token keyword">TABLES</span> <span class="token operator">IN</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">schema</span> <span class="token keyword">FROM</span> rolle<span class="token punctuation">;</span>
+
+<span class="token keyword">DROP</span> ROLE <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> rolle<span class="token punctuation">;</span>
+</code></pre>
+<h4 id="transaktionen">Transaktionen</h4>
+<ul>
+<li><code>COMMIT</code></li>
+<li><code>ROLLBACK</code></li>
+<li><code>BEGIN TRANSACTION</code></li>
+<li><code>SAVEPOINT name;</code></li>
+<li><code>ROLLBACK TO name;</code></li>
+<li><code>ROLLBACK;</code></li>
+</ul>
+<h5 id="nebeneffekte-bei-konkurrierenden-transaktionen">Nebeneffekte bei konkurrierenden Transaktionen</h5>
+<ul>
+<li>Dirty Read</li>
+<li>Non-Repeatable Read</li>
+<li>Phantom Read</li>
+</ul>
+<h4 id="isolationslevel">Isolationslevel</h4>
+<p><code>READ COMMITED</code> -&gt; Möglich: <strong>Non-Repeatable Read, Phantom Read</strong><br>
+<code>SERIALIZABLE</code> -&gt; Möglich: <strong>Nichts</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">BEGIN</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION LEVEL</span> <span class="token keyword">SERIALIZABLE</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="views">VIEWS</h4>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> REPLACE<span class="token punctuation">]</span> <span class="token keyword">VIEW</span> viewname
+<span class="token keyword">AS</span> <span class="token keyword">SELECT</span> spaltennamen
+<span class="token keyword">FROM</span> basistabelle<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">view</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> 
+<span class="token keyword">WHERE</span> bedingungen<span class="token punctuation">;</span>
+</code></pre>
+<h5 id="materialized-view">Materialized View</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> REPLACE<span class="token punctuation">]</span> MATERIALIZED <span class="token keyword">VIEW</span> viewname
+<span class="token keyword">AS</span> <span class="token keyword">SELECT</span> spaltennamen
+<span class="token keyword">FROM</span> basistabelle<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">view</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> 
+<span class="token keyword">WHERE</span> bedingungen<span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql">REFRESH MATERIALIZED <span class="token keyword">VIEW</span> view_name<span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> <span class="token keyword">VIEW</span> viewname<span class="token punctuation">;</span>
+<span class="token keyword">DROP</span> MATERIALIZED <span class="token keyword">VIEW</span> viewname<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="sql-erweiterungen">SQL-Erweiterungen</h2>
+<h4 id="stored-procedure">STORED PROCEDURE</h4>
+<p><strong>Erstellen</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> REPLACE<span class="token punctuation">]</span> <span class="token keyword">PROCEDURE</span> procedure_name<span class="token punctuation">(</span>parameter<span class="token punctuation">)</span>
+LANGUAGE plpgsql
+<span class="token keyword">AS</span> $$
+<span class="token keyword">DECLARE</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span> $$
+</code></pre>
+<p><strong>Aufrufen</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CALL</span> procedure_name<span class="token punctuation">(</span>parameter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>Parameterliste - Beispiel</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token punctuation">(</span>filileid <span class="token keyword">int</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">IN</span> filialeid <span class="token keyword">int</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">IN</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DECLARE</span> filialeid <span class="token keyword">FOR</span> $<span class="token number">1</span>
+</code></pre>
+<h5 id="inout">INOUT</h5>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token operator">OR</span> REPLACE <span class="token keyword">PROCEDURE</span> zurückgeben<span class="token punctuation">(</span><span class="token keyword">INOUT</span> x <span class="token keyword">int</span><span class="token punctuation">)</span>
+LANGUAGE plpsql
+<span class="token keyword">AS</span> $$
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">SELECT</span> x <span class="token keyword">into</span> x<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span> $$<span class="token punctuation">;</span>
+
+<span class="token keyword">CALL</span> zurückgeben<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>Löschen von Procedures</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span> name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Parameter müssen angegeben werden!</p>
+<h4 id="user-defined-functions">User Defined Functions</h4>
+<p><strong>Form</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> REPLACE<span class="token punctuation">]</span> <span class="token keyword">FUNCTION</span> Funktionsname<span class="token punctuation">(</span>Übergabeparameter<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token keyword">RETURNS</span> Rückgabeparameter <span class="token operator">|</span> <span class="token keyword">RETURNS</span> <span class="token keyword">TABLE</span> <span class="token punctuation">(</span>Spaltenliste<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">AS</span> $$
+    <span class="token punctuation">[</span><span class="token keyword">DECLARE</span> Variablendeklaration<span class="token punctuation">;</span><span class="token punctuation">]</span>
+<span class="token keyword">BEGIN</span>
+    Funktionskörper SQL<span class="token operator">-</span>Anweisungen<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+$$ LANGUAGE PLPGSQL<span class="token punctuation">;</span>
+</code></pre>
+<p><strong>Rückgabe mit Return</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token operator">OR</span> REPLACE <span class="token keyword">TABLE</span> tabellenname<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURNS</span> <span class="token keyword">NUMERIC</span>
+<span class="token comment">-- CODE --</span>
+<span class="token keyword">RETURN</span> ergebnis<span class="token punctuation">;</span>
+<span class="token comment">-- CODE --</span>
+</code></pre>
+<p><strong>Rückgabe - Table</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token operator">OR</span> REPLACE <span class="token keyword">TABLE</span> tabellenname<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURNS</span> <span class="token keyword">TABLE</span><span class="token punctuation">(</span>attribut1 typ1<span class="token punctuation">,</span> attribut2 typ2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token comment">-- CODE --</span>
+<span class="token keyword">RETURN</span> QUERY
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">from</span> tabellenname<span class="token punctuation">;</span>
+<span class="token comment">-- CODE --</span>
+</code></pre>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> tabellenname<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>Löschen von User Defined Funktions</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> <span class="token keyword">FUNCTION</span> funktionsname<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="trigger">Trigger</h3>
+<p><strong>Form</strong></p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> Triggername 
+<span class="token punctuation">(</span>BEFORE <span class="token operator">|</span> <span class="token keyword">AFTER</span><span class="token operator">|</span> INSTEAD <span class="token keyword">OF</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">INSERT</span> <span class="token operator">|</span> <span class="token keyword">DELETE</span> <span class="token operator">|</span> <span class="token keyword">UPDATE</span><span class="token punctuation">[</span><span class="token keyword">OF</span> Spalten<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">OR</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">ON</span> Tabellenname<span class="token operator">|</span><span class="token keyword">View</span>
+<span class="token keyword">FOR EACH ROW</span> <span class="token operator">|</span> <span class="token keyword">FOR</span> EACH STATEMENT
+<span class="token keyword">EXECUTE</span> <span class="token keyword">PROCEDURE</span> funktion_name<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="before-trigger">Before Trigger</h5>
+<ul>
+<li>NEW - Neue Daten</li>
+<li>OLD - Alte Daten</li>
+</ul>
+<p><em>Nur in <code>FOR EACH ROW</code>-Trigger</em></p>
+<ul>
+<li><code>RETURN NEW</code></li>
+<li><code>RETURN OLD</code></li>
+<li><code>RETURN NULL</code></li>
+</ul>
+<h5 id="after-trigger">After Trigger</h5>
+<ul>
+<li>Rückgabewert ohne Funktion</li>
+</ul>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">DROP</span> TREGGER NAME <span class="token keyword">ON</span> tabelle<span class="token operator">|</span><span class="token keyword">view</span>
+</code></pre>
+</div>
+</body>
+
+</html>
