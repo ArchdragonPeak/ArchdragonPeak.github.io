@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>its-probeklausur</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h3 id="rsa-12-points">1. RSA (12 points)</h3>
+<ol>
+<li>
+<p><strong>(4 pts) RSA Computation</strong> : Let <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">p = 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>19</mn></mrow><annotation encoding="application/x-tex">q = 19</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">q</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">19</span></span></span></span></span> be the chosen RSA prime numbers and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>31</mn></mrow><annotation encoding="application/x-tex">e = 31</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">31</span></span></span></span></span> the public exponent. Compute <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">n</span></span></span></span></span>, i.e., the second part of the public key, and the private key <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">d</span></span></span></span></span>. Hint: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>≤</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">d \leq 11</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83041em; vertical-align: -0.13597em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">11</span></span></span></span></span>.</p>
+</li>
+<li>
+<p><strong>(4 pts) Encryption</strong> : Encrypt the plaintext message <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.43056em; vertical-align: 0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">5</span></span></span></span></span> using the public key <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>=</mo><mn>57</mn><mo separator="true">,</mo><mi>e</mi><mo>=</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n = 57, e = 3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.83888em; vertical-align: -0.19444em;"></span><span class="mord">57</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">3</span><span class="mclose">)</span></span></span></span></span>. Warning: Do not use the key material derived from the previous task; use the ones specified in the previous sentence.</p>
+</li>
+<li>
+<p><strong>(4 pts) Decryption</strong> : Decrypt the ciphertext <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">y = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.625em; vertical-align: -0.19444em;"></span><span class="mord mathnormal" style="margin-right: 0.03588em;">y</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">5</span></span></span></span></span> using the private key <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">d = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">7</span></span></span></span></span> and the public key <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>=</mo><mn>33</mn><mo separator="true">,</mo><mi>e</mi><mo>=</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n = 33, e = 3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.83888em; vertical-align: -0.19444em;"></span><span class="mord">33</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">3</span><span class="mclose">)</span></span></span></span></span>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="symmetric-encryption-14-points">2. Symmetric Encryption (14 points)</h3>
+<ol>
+<li><strong>(4 pts) One-time Pads (OTPs)</strong> : Assume two messages <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">m_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">m_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> are encrypted under the same OTP. An attacker observes the ciphertext <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>=</mo><mn>0101</mn></mrow><annotation encoding="application/x-tex">c_2 = 0101</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0101</span></span></span></span></span> of the second message; the ciphertext <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">c_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> (of the first message) is unknown. The attacker knows that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mn>1111</mn></mrow><annotation encoding="application/x-tex">m_1 = 1111</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1111</span></span></span></span></span> and that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">m_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> differs in exactly a single bit position (e.g., <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mn>1101</mn></mrow><annotation encoding="application/x-tex">m_2 = 1101</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1101</span></span></span></span></span> is valid, but also <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mn>0111</mn></mrow><annotation encoding="application/x-tex">m_2 = 0111</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">0111</span></span></span></span></span>).</li>
+</ol>
+<ul>
+<li>
+<p>How many bits in <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">c_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span> will differ from <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">c_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>?</p>
+</li>
+<li>
+<p>How can you (partially) derive the OTP?</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>(4 pts) Cipher block modes</strong> : Your colleague suggests a new cipher mode in which only the first block uses the key: <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><msub><mi>F</mi><mi>k</mi></msub><mo stretchy="false">(</mo><msub><mi>m</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c_1 = F_k(m_1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.336108em;"><span class="" style="top: -2.55em; margin-left: -0.13889em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right: 0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.301108em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>, and all other subsequent blocks are masked using <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>=</mo><msub><mi>m</mi><mi>i</mi></msub><mo>⊕</mo><msub><mi>c</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">c_i = m_i \oplus c_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.58056em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.73333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.638891em; vertical-align: -0.208331em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.208331em;"><span class=""></span></span></span></span></span></span></span></span></span></span>. Is this secure? Why (not)?</p>
+</li>
+<li>
+<p><strong>(3 pts) AES Keys</strong> : Assume a communication system with 8 users. How many keys overall are required if every pair of users wants to communicate over their “own” AES channel?</p>
+</li>
+<li>
+<p><strong>(3 pts) Symmetric Signatures</strong> : Assume two users <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">A</span></span></span></span></span> and <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.05017em;">B</span></span></span></span></span> share a key <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding="application/x-tex">K_{AB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right: 0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.328331em;"><span class="" style="top: -2.55em; margin-left: -0.07153em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span><span class="mord mathnormal mtight" style="margin-right: 0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>. Can they use HMACs such that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal">A</span></span></span></span></span> can prove to third parties that <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.68333em; vertical-align: 0em;"></span><span class="mord mathnormal" style="margin-right: 0.05017em;">B</span></span></span></span></span> has sent a given message? How, or why not?</p>
+</li>
+</ol>
+<hr>
+<h3 id="network-security-12-pts">3. Network Security (12 pts)</h3>
+<ol>
+<li>
+<p><strong>Stolen TLS Certificates (4 pts)</strong> : Your fellow students claim that they have “stolen” the TLS certificate of <a href="http://schau.de">schau.de</a>. After you sniffed the communication when visiting this website, you indeed can confirm that <a href="http://schau.de">schau.de</a> ships its TLS certificate to its clients as part of the TLS handshake. Does the possession of the certificate allow you to impersonate <a href="http://schau.de">schau.de</a> in a Person-in-the-Middle attack against an HTTPS-encrypted stream between a client and <a href="http://schau.de">schau.de</a>? (+1) If so, how, if not, why not? (+3)</p>
+</li>
+<li>
+<p><strong>Self-Signed TLS Certificates (4 pts)</strong> : Assume an attacker creates a self-signed TLS certificate for the domain <a href="http://schau.de">schau.de</a>. If the attacker aims to “mimic” (dt.: “nachahmen”) the website using this certificate, would users notice? Why (not)?</p>
+</li>
+<li>
+<p><strong>Leaked TLS Certificate Credentials (4 pts)</strong> : Assume the key material of one of the root CAs leaks publicly. What are the security implications of such a breach? How can this problem be resolved?</p>
+</li>
+</ol>
+<hr>
+<h3 id="software-security-shellcode-14-points">4. Software Security: Shellcode (14 points)</h3>
+<p>You encounter the following Linux x64 shellcode. The code is structured in five code blocks (as per comments). Your task is to analyze this shellcode grouped by code block. Assume that <code>fname</code> is an address to readable/writable memory.</p>
+<ol>
+<li>
+<p><strong>Calling convention (3.5 pts)</strong> : Note down how the system call number and the first three parameters are passed to x64 Linux system calls. Mention where the system call return value is stored.</p>
+</li>
+<li>
+<p><strong>Syscalls (4.5 pts)</strong> : The shellcode issues three system calls. List them and their parameters, identified by block number. Define system call return values whenever necessary. Example: <code>rval = sys.close(fd)</code>.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Hint #1: Find a partial system call table below.</p>
+</li>
+<li>
+<p>Hint #2: 0 is a special Linux file that refers to stdin, i.e., input from the console.</p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>Shellcode Block Semantics (6 pts)</strong> : Each of the four code blocks follows a certain goal. Briefly describe this goal per code block.<strong>Block 1:</strong></li>
+</ol>
+<pre class=" language-nasm"><code class="prism  language-nasm">xor <span class="token register variable">rax</span>, <span class="token register variable">rax</span>
+xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
+lea <span class="token register variable">rsi</span>, <span class="token operator">[</span>fname<span class="token operator">]</span>
+mov <span class="token register variable">rdx</span>, <span class="token number">32</span>
+syscall
+</code></pre>
+<p><strong>Block 2:</strong></p>
+<pre class=" language-nasm"><code class="prism  language-nasm">cmp <span class="token register variable">rax</span>, <span class="token number">0</span>
+mov <span class="token register variable">rdi</span>, <span class="token number">-1</span>
+jle skip
+</code></pre>
+<p><strong>Block 3:</strong></p>
+<pre class=" language-nasm"><code class="prism  language-nasm">push <span class="token number">87</span>
+pop <span class="token register variable">rax</span>
+lea <span class="token register variable">rdi</span>, <span class="token operator">[</span>fname<span class="token operator">]</span>
+mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
+syscall
+</code></pre>
+<p><strong>Block 4:</strong></p>
+<pre class=" language-nasm"><code class="prism  language-nasm">push <span class="token number">62</span>
+pop <span class="token register variable">rax</span>
+sub <span class="token register variable">rax</span>, <span class="token number">2</span>
+syscall
+</code></pre>
+<p><strong>Partial x64 Linux System Call Table:</strong></p>
+<pre class=" language-js"><code class="prism  language-js">#   syscall       arg1        arg2        arg3
+<span class="token number">0</span>   sys_read      uint fd     char <span class="token operator">*</span>buf   size_t count
+<span class="token number">1</span>   sys_write     uint fd     char <span class="token operator">*</span>buf   size_t count
+<span class="token number">2</span>   sys_open      char <span class="token operator">*</span>fname int flags   int mode
+<span class="token number">3</span>   sys_close     uint fd
+<span class="token number">57</span>  sys_fork
+<span class="token number">59</span>  sys_execve    char <span class="token operator">*</span>fname char <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span> char <span class="token operator">*</span>envp<span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token number">60</span>  sys_exit      int error_code
+<span class="token number">62</span>  sys_kill      pid_t pid   int signal
+<span class="token number">87</span>  sys_unlink    char <span class="token operator">*</span>fname
+<span class="token number">88</span>  sys_symlink   char <span class="token operator">*</span>fname1 char <span class="token operator">*</span>fname2
+<span class="token number">90</span>  sys_chmod     char <span class="token operator">*</span>fname int mode
+</code></pre>
+<hr>
+<h3 id="software-security-code-reuse-attack-12-points">5. Software Security: Code-Reuse Attack (12 points)</h3>
+<p>The following 64-bit x86 program contains a buffer overflow vulnerability that allows you to perform a code-reuse attack that calls the function <code>reuse_me()</code>:</p>
+<pre class=" language-c"><code class="prism  language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">char</span> secret<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"LeakMe!"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">reuse_me</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">puts</span><span class="token punctuation">(</span>secret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fflush</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    uint64_t bvb <span class="token operator">=</span> <span class="token number">0x9</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> input<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    uint64_t sfi <span class="token operator">=</span> <span class="token number">0x1337</span><span class="token punctuation">;</span>
+
+    <span class="token function">gets</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"You wrote: %s\n"</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ol>
+<li>
+<p><strong>Overflow (2 pts)</strong> : Pinpoint and describe the buffer overflow vulnerability in the above program. State the affected line number(s), and when an overflow occurs.</p>
+</li>
+<li>
+<p><strong>Stack Layout (4 pts)</strong> : Describe or draw the stack layout of the <code>main()</code> function just before the overflow may happen. That is, draw which elements are stored on the stack, and in which order. Assume that the base pointer is also stored on the stack, and that the order of variables on the stack is as specified in the program.</p>
+</li>
+<li>
+<p><strong>Exploit (4 pts)</strong> : Provide a concrete input that abuses the vulnerability and jumps to the <code>reuse_me()</code> function. Assume that the address of <code>reuse_me</code> is 0x04556677.</p>
+</li>
+<li>
+<p><strong>ASLR (2 pts)</strong> : Can a stack canary help to mitigate this concrete vulnerability? How, or why not?</p>
+</li>
+</ol>
+<hr>
+<h3 id="access-control-12-points">6. Access Control (12 points)</h3>
+
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zeus</td>
+<td>Gentle</td>
+</tr>
+<tr>
+<td>Hera</td>
+<td>Gentle</td>
+</tr>
+<tr>
+<td>Poseidon</td>
+<td>Wannabes</td>
+</tr>
+<tr>
+<td>Aphro</td>
+<td>Moody</td>
+</tr>
+<tr>
+<td>Hades</td>
+<td>Moody</td>
+</tr>
+<tr>
+<td>Artemis</td>
+<td>Gentle</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Owner</th>
+<th>Group</th>
+<th>Privileges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>athens</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>thessa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>patras</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>piraeus</td>
+<td></td>
+<td></td>
+<td>RWX</td>
+</tr>
+<tr>
+<td>iraklio</td>
+<td>Hades</td>
+<td>Moody</td>
+<td>RWX</td>
+</tr>
+</tbody>
+</table><p>Assume a system with the users/groups (left) and files (right) listed above. Your task is to correctly fill the missing user (“Owner”) and group (“Group”) ownership and the privileges of each file. Be as restrictive as possible, i.e., only give access if explicitly mentioned in the task. Assume that the user and group assignment will never change.<br>
+<strong>Syntax</strong> : Use “R” for read, “W” for write, and “X” for executable privileges, respectively. Use “-” for no privileges. File “iraklio” just serves as an example.<strong>Your tasks:</strong></p>
+<ol>
+<li>
+<p><strong>(3 pts)</strong> : The file “athens” should be readable and writable by user “Zeus”. Furthermore, the group “Gentle” should be able to read the file.</p>
+</li>
+<li>
+<p><strong>(3 pts)</strong> : The file “thessa” should be owned by user “Aphro” and be readable by everyone. But only “Aphro” should be allowed to write to this file.</p>
+</li>
+<li>
+<p><strong>(3 pts)</strong> : The file “patras” should be read- and write-accessible by its owner “Hades”.</p>
+</li>
+<li>
+<p><strong>(3 pts)</strong> : “Poseidon” created and regularly patches/tests the executable file “piraeus”, but also users “Aphro” and “Hades” should be able to execute the file.</p>
+</li>
+</ol>
+<hr>
+<h3 id="web-security-14-pts">7. Web Security (14 pts)</h3>
+<ol>
+<li><strong>(5 pts)</strong>  You are responsible for a webshop that ships the following form to let authenticated (logged in) users submit orders via HTTPS.</li>
+</ol>
+<ul>
+<li>
+<p><strong>(2 pts)</strong>  This form is unprotected against a certain attack type. Which?</p>
+</li>
+<li>
+<p><strong>(2 pts)</strong>  What could attackers achieve by abusing this insecure form?</p>
+</li>
+<li>
+<p><strong>(1 pt)</strong>  How can you fix this vulnerability?</p>
+</li>
+</ul>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/order.php<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Dear client! Congratulations on winning a pizza voucher.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>We’ll gladly accept your order for a free pizza.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Please enter your pizza choice in the form below:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    Pizza: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pizza<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>prod<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Delivery Address: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>address<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>addr<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>GetMyPizza!<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<ol>
+<li><strong>(8 pts)</strong>  You encounter the following PHP code that uses the username GET parameter to build a SQL query.</li>
+</ol>
+<pre class=" language-php"><code class="prism  language-php"><span class="token variable">$sql</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token string">"
+    UPDATE users 
+    SET last_active = NOW() 
+    WHERE uname = '"</span> <span class="token punctuation">.</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">"username"</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">"'"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>
+<p><strong>(1 pt)</strong>  What type of vulnerability does the code include?</p>
+</li>
+<li>
+<p><strong>(3 pts)</strong>  Why does this vulnerability exist in the given code example?</p>
+</li>
+<li>
+<p><strong>(2 pts)</strong>  Which goals can an attacker achieve by abusing the vulnerability?</p>
+</li>
+<li>
+<p><strong>(2 pts)</strong>  How can you reliably mitigate such vulnerabilities?</p>
+</li>
+</ul>
+
+    </div>
+  </div>
+</body>
+
+</html>
