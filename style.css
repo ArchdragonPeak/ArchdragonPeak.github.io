@@ -1,5 +1,5 @@
 body {
-    background-color: whitesmoke;
+    background-color: cadetblue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,19 +27,19 @@ a {
     margin: 10px 0;
     text-decoration: none;
     color: black;
-    font-size: 22px;
+    font-size: 25px;
 }
-a:hover {
-    color: #0056b3;
+.link:hover {
+    color: white;
 }
 #main-title {
     font-weight: bold;
     font-variant: small-caps;
     padding-bottom: 10px;   
-    font-size: 28px;         
+    font-size: 32px;         
 }
 .column-title {
     font-weight: bold;
     padding-bottom: 10px;
-    font-size: 24px;
+    font-size: 28px;
 }
